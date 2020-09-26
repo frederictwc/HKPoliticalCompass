@@ -36,13 +36,12 @@
 			document.getElementById('correctAnswer1').innerHTML = correctAnswer('correctString1', 1);
 		}
 		if (answerScore('q2') === 0) {
+			console.log(document.getElementById('hk_gov_logo'))
+			console.log('hi')
+			document.getElementById('hk_gov_logo').style.display = 'block'
+			console.log(document.getElementById('hk_gov_logo'))
 			document.getElementById('correctAnswer2').innerHTML = correctAnswer('correctString2', 2);
-		}
-		if (answerScore('q3') === 0) {
-			document.getElementById('correctAnswer3').innerHTML = correctAnswer('correctString3', 3);
-		}
-		if (answerScore('q4') === 0) {
-			document.getElementById('correctAnswer4').innerHTML = correctAnswer('correctString4', 4);
+		    //document.getElementById('hk_gov_logo').style.display == 'block';
 		}
 
 	// calculate "possible score" integer
