@@ -33,9 +33,7 @@
 		var showScore = "Your political score: " + calcScore +"/" + questionCounter;
 
 		document.getElementById('userScore').innerHTML = showScore;
-		document.getElementById('hk_gov_logo').style.display = 'block'
-
+        document.getElementById('chartContainer').style.display = 'block'
         console.log("Total Score: " + calcScore + ", " + '# Questions: ' + questionCounter )
-
+        
 	}
-

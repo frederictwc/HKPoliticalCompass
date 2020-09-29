@@ -7,7 +7,11 @@
 	    <title></title>
     </head>
 		<body>
-		  <h2 class="quizHeader">Political Compass Test</h2>
+		  <h2 class="quizHeader">
+            <img src="hk_gov_logo.jpg" id='hk_gov_logo' width='50' height=50>
+		  	Political Compass Test
+          
+		  </h2>
 		  
 			<table style="width:583px">
 			<tr>
@@ -60,13 +64,44 @@
 		          type="submit" value="Submit" />
 		    </div>
 		  
-		<!--show only wrong answers on submit-->
-            <img src="hk_gov_logo.jpg" id='hk_gov_logo' style='display:none;' width='200' height=200>
 		<!--show score upon submit-->
 		    <div>
 		    <h2 class="quizScore" id="userScore"></h2>
 		    </div>
 			</div>
-        
-		</body>
-</html>
+			<script type="text/javascript">
+			  window.onload = function () {
+			    var chart = new CanvasJS.Chart("chartContainer",
+			    {
+			     title:{
+			            text: 'Your Political Compass'
+			    },
+                axisX:{
+                       minimum: -3,
+                       maximum: +3,
+                       gridThickness: 1
+                },
+                axisY:{
+                       minimum: -3,
+                       maximum: +3,
+                       gridThickness: 1
+                },
+			    data: [
+			    {
+			     type: "scatter",
+			     dataPoints: [
+
+			     { x: 0, y: 0, indexLabel: "You" }
+			     ]
+			   }
+			   ]
+			 });
+
+			chart.render();
+			}
+			</script>
+			<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+			<div id="chartContainer" style="height: 300px; width: 500px;display: none;">
+			  </div>
