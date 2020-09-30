@@ -66,12 +66,21 @@
 			chart.render();
 			}
         createChart(calcScore)
-
-        var database = firebase.database();
-        function writeUserData(userId, name, email, imageUrl) {
-            firebase.database().ref('users/' + userId).set({
-            username: name,
-            email: email,
-            });}    
-        writeUserData(1,"dd","ddd")  
+        var firebaseConfig = {
+			  apiKey: "AIzaSyBvYrAjaChRzpFdxsAzAz1qp-2iZH-vGkM",
+			  authDomain: "hkpoliticalcompass.firebaseapp.com",
+			  databaseURL: "https://hkpoliticalcompass.firebaseio.com",
+			  projectId: "hkpoliticalcompass",
+			  storageBucket: "hkpoliticalcompass.appspot.com",
+			  messagingSenderId: "883847575366",
+			  appId: "1:883847575366:web:82632bd8f78b0600b65747",
+			  measurementId: "G-EFE7F08XT6"};
+	    firebase.initializeApp(firebaseConfig);
+	    function writeData() {
+	        	firebase.database().ref("Answers").set({
+	        		NoQuestions: questionCounter,
+	        		Score: calcScore
+	        	});
+	        }
+        writeData()
 	}
