@@ -21,7 +21,7 @@
 		}
 
 	// calc score with answerScore function
-		var calcScore = (answerScore('q1') + answerScore('q2'));
+		var calcScore = (answerScore('q1') + answerScore('q2') + answerScore('q3'));
 
 	// calculate "possible score" integer
 		var questionCountArray = document.getElementsByClassName('question');
@@ -30,10 +30,48 @@
 			questionCounter++;
 		}
 	// show score as "score/possible score"
-		var showScore = "Your political score: " + calcScore +"/" + questionCounter;
 
-		document.getElementById('userScore').innerHTML = showScore;
         document.getElementById('chartContainer').style.display = 'block'
         console.log("Total Score: " + calcScore + ", " + '# Questions: ' + questionCounter )
         
+
+        function createChart (x) {
+			    var chart = new CanvasJS.Chart("chartContainer",
+			    {
+			     title:{
+			            text: 'Your Political Compass'
+			    },
+                axisX:{
+                	   title: '<<Yellow<<- ->>Blue>>',
+                       minimum: -3,
+                       maximum: +3,
+                       gridThickness: 1
+                },
+                axisY:{
+                       minimum: -1,
+                       maximum: 1,
+
+                },
+			    data: [
+			    {
+			     type: "scatter",
+			     dataPoints: [
+
+			     { x: x, y: 0, indexLabel: "You" }
+			     ]
+			   }
+			   ]
+			 });
+
+			chart.render();
+			}
+        createChart(calcScore)
+
+        var database = firebase.database();
+        function writeUserData(userId, name, email, imageUrl) {
+            firebase.database().ref('users/' + userId).set({
+            username: name,
+            email: email,
+            });}    
+        writeUserData(1,"dd","ddd")  
 	}

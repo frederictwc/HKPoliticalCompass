@@ -28,9 +28,6 @@
 			        <br>
 			        <input class="answer" type="radio" name="q1" value="0">
 			        <label>I am neutral</label>
-			        <br>
-			        <input class="answer" type="radio" name="q1" value="0">
-			        <label>I don't know</label>
 		    		</ul>
 			  	</div>
 			  </td>
@@ -49,10 +46,25 @@
 			        <br>
 			        <input class="answer" type="radio" name="q2" value="0">
 			        <label>I am neutral</label>
-			        <br>
-			        <input class="answer" type="radio" name="q2" value="0">
-			        <label>I don't know</label>
 			    	</ul>
+			  	</div>
+			  </td>
+			</tr>
+			<tr>
+			  <td>
+			  	<div>
+			  		<p class="question">3. Do you support the Hong Kong democracy movement?</p>
+
+			    	<ul>
+			    	<input class="answer" type="radio" name="q3" value="-1">
+			        <label id="correctString1">Yes</label>
+			    	<br>
+			        <input class="answer" type="radio" name="q3" value="1">
+			        <label>No</label>
+			        <br>
+			        <input class="answer" type="radio" name="q3" value="0">
+			        <label>I am neutral</label>
+		    		</ul>
 			  	</div>
 			  </td>
 			</tr>
@@ -64,44 +76,35 @@
 		          type="submit" value="Submit" />
 		    </div>
 		  
-		<!--show score upon submit-->
-		    <div>
-		    <h2 class="quizScore" id="userScore"></h2>
-		    </div>
-			</div>
-			<script type="text/javascript">
-			  window.onload = function () {
-			    var chart = new CanvasJS.Chart("chartContainer",
-			    {
-			     title:{
-			            text: 'Your Political Compass'
-			    },
-                axisX:{
-                       minimum: -3,
-                       maximum: +3,
-                       gridThickness: 1
-                },
-                axisY:{
-                       minimum: -3,
-                       maximum: +3,
-                       gridThickness: 1
-                },
-			    data: [
-			    {
-			     type: "scatter",
-			     dataPoints: [
 
-			     { x: 0, y: 0, indexLabel: "You" }
-			     ]
-			   }
-			   ]
-			 });
-
-			chart.render();
-			}
-			</script>
 			<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 
 			<div id="chartContainer" style="height: 300px; width: 500px;display: none;">
 			  </div>
+		
+        <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
+        <script>
+			var firebaseConfig = {
+			  apiKey: "AIzaSyBvYrAjaChRzpFdxsAzAz1qp-2iZH-vGkM",
+			  authDomain: "hkpoliticalcompass.firebaseapp.com",
+			  databaseURL: "https://hkpoliticalcompass.firebaseio.com",
+			  projectId: "hkpoliticalcompass",
+			  storageBucket: "hkpoliticalcompass.appspot.com",
+			  messagingSenderId: "883847575366",
+			  appId: "1:883847575366:web:82632bd8f78b0600b65747",
+			  measurementId: "G-EFE7F08XT6"};
+	        firebase.initializeApp(firebaseConfig);
+	          function writeData() {
+	        	firebase.database().ref("User").set({
+	        		name: document.getElementById("nameField").value,
+	        		age: document.getElementById("ageField").value
+	        	});
+	        }
+	    </script>	
+	    <input type = "text" placeholder= "name" id= "nameField">
+	    <input type = "text" placeholder= "name" id= "ageField">
+	    <button onclick = "writeData()">Submit</button>
+	    </body>
+</html>
