@@ -75,7 +75,8 @@ const importedFunction = require('./functions');
 importedFunction.sayHello(); 
 ```
 In a terminal, run 
-```node import.js
+```
+node import.js
 ```
 The output will be 
 ```
