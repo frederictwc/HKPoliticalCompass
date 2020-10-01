@@ -55,5 +55,29 @@ Follow instructions [here](https://firebase.google.com/docs/database/web/start).
 <input type = "text" placeholder= "name" id= "ageField">
 <button onclick = "writeData()">Submit</button>
 </body>
+```
 
+## Simple Javascript examples
+
+### How to import functions from another file
+Lets say you have a file called functions.js.
+```javascript
+// mymodule.js
+function sayHello() {
+      console.log("Hello World")
+   }
+
+module.exports = {sayHello}
+```
+And another file called import.js in which you want to import a function to.
+```javascript
+const importedFunction = require('./functions');
+importedFunction.sayHello(); 
+```
+In a terminal, run 
+```node import.js
+```
+The output will be 
+```
+Hello World
 ```
