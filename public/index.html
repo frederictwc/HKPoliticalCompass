@@ -6,85 +6,73 @@
     	<script src = "script.js"></script>
 	    <title></title>
     </head>
-		<body>
-		  <h2 class="quizHeader">
-            <img src="hk_gov_logo.jpg" id='hk_gov_logo' width='50' height=50>
-		  	Political Compass Test
-          
-		  </h2>
-		  
-			<table style="width:583px">
-			<tr>
-			  <td>
-			  	<div>
-			  		<p class="question">1. Do you support the Hong Kong government?</p>
-
-			    	<ul>
-			    	<input class="answer" type="radio" name="q1" value="1">
-			        <label id="correctString1">Yes</label>
-			    	<br>
-			        <input class="answer" type="radio" name="q1" value="-1">
-			        <label>No</label>
-			        <br>
-			        <input class="answer" type="radio" name="q1" value="0">
-			        <label>I am neutral</label>
-		    		</ul>
-			  	</div>
-			  </td>
-			</tr>
-			<tr>
-			  <td>
-			  	<div>
-			  		<p class="question">2. Do you support the Chinese Communist Party?</p>
-
-			    	<ul>
-			        <input class="answer" type="radio" name="q2" value="1">
-			        <label>Yes</label>
-			        <br>
-			        <input class="answer" type="radio" name="q2" value="-1">
-			        <label id="correctString2">No</label>
-			        <br>
-			        <input class="answer" type="radio" name="q2" value="0">
-			        <label>I am neutral</label>
-			    	</ul>
-			  	</div>
-			  </td>
-			</tr>
-			<tr>
-			  <td>
-			  	<div>
-			  		<p class="question">3. Do you support the Hong Kong democracy movement?</p>
-
-			    	<ul>
-			    	<input class="answer" type="radio" name="q3" value="-1">
-			        <label id="correctString1">Yes</label>
-			    	<br>
-			        <input class="answer" type="radio" name="q3" value="1">
-			        <label>No</label>
-			        <br>
-			        <input class="answer" type="radio" name="q3" value="0">
-			        <label>I am neutral</label>
-		    		</ul>
-			  	</div>
-			  </td>
-			</tr>
-
-			</table>
-		<br/>
-		  <div class="submitter">
-		          <input class="quizSubmit" id="submitButton" onClick="submitQuiz()"
-		          type="submit" value="Submit" />
-		    </div>
-		  
-
-			<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
-
-			<div id="chartContainer" style="height: 300px; width: 500px;display: none;">
-			  </div>
-		
-        <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
-
-	    </body>
+	<body>
+	  <h2 class="quizHeader">
+        <img src="hk_gov_logo.jpg" id='hk_gov_logo' width='50' height=50>
+	  	Political Compass Test 
+	  </h2>  
+		<table style="width:583px">
+		<tr>
+		  <td>
+		  	<div>
+		  		<p class="question">1. Do you support the Hong Kong government?</p>
+		    	<ul>
+		    	<input class="answer" type="radio" name="q1" value="1">
+		        <label id="correctString1">Yes</label>
+		    	<br>
+		        <input class="answer" type="radio" name="q1" value="-1">
+		        <label>No</label>
+		        <br>
+		        <input class="answer" type="radio" name="q1" value="0">
+		        <label>I am neutral</label>
+	    		</ul>
+		  	</div>
+		  </td>
+		</tr>
+		<tr>
+		  <td>
+		  	<div>
+		  		<p class="question">2. Do you support the Chinese Communist Party?</p>
+		    	<ul>
+		        <input class="answer" type="radio" name="q2" value="1">
+		        <label>Yes</label>
+		        <br>
+		        <input class="answer" type="radio" name="q2" value="-1">
+		        <label id="correctString2">No</label>
+		        <br>
+		        <input class="answer" type="radio" name="q2" value="0">
+		        <label>I am neutral</label>
+		    	</ul>
+		  	</div>
+		  </td>
+		</tr>
+		<tr>
+		  <td>
+		  	<div>
+		  		<p class="question">3. Do you support the Hong Kong democracy movement?</p>
+		    	<ul>
+		    	<input class="answer" type="radio" name="q3" value="-1">
+		        <label id="correctString1">Yes</label>
+		    	<br>
+		        <input class="answer" type="radio" name="q3" value="1">
+		        <label>No</label>
+		        <br>
+		        <input class="answer" type="radio" name="q3" value="0">
+		        <label>I am neutral</label>
+	    		</ul>
+		  	</div>
+		  </td>
+		</tr>
+		</table>
+	  <div class="submitter">
+	          <input class="quizSubmit" id="submitButton" onClick="submitQuiz()"
+	          type="submit" value="Submit">
+	  </div>
+		<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+		<div id="chartContainer" style="height: 300px; width: 500px;display: none;">
+	  </div>
+	  <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
+    
+    </body>
 </html>
