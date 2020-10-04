@@ -1,15 +1,41 @@
-function answerScore (qName) {
-	var radiosNo = document.getElementsByName(qName);
+function getScore (qName) {
 
-	for (var i = 0, length = radiosNo.length; i < length; i++) {
+    function getQuestionScore() {
+    	var radiosNo = document.getElementsByName(qName);
+		for (var i = 0, length = radiosNo.length; i < length; i++) {
 			if (radiosNo[i].checked) {
 			     var answerValue = Number(radiosNo[i].value);
 		    }
-	}
-	if (isNaN(answerValue)) {
-		answerValue = 0;
-	}
-	return answerValue;
+		}
+		console.log(answerValue)
+		if (isNaN(answerValue)) {
+			answerValue = 0;
+		}
+
+		return answerValue;
+    }
+
+    function getNumberOfQuestions() {
+        var questionCountArray = document.getElementsByClassName('question');
+	    var questionCounter = 0;
+		for (var i = 0, length = questionCountArray.length; i < length; i++) {
+			questionCounter++;
+	    }
+        return questionCounter
+    }
+
+    function normalizeScore(questionCounter,calcScore) {
+    	// returns a score between -1,1
+    	console.log("noamalizing" + calcScore + ";" + questionCounter)
+    	var normalizedScore = calcScore/questionCounter
+    	return normalizedScore
+    }
+
+    var calcScore = (getQuestionScore('q1') + getQuestionScore('q2') + getQuestionScore('q1'));
+    questionCounter = getNumberOfQuestions()
+    calcScore = normalizeScore(questionCounter,calcScore)
+    console.log("Total Score: " + calcScore + ", " + 'Questions: ' + questionCounter) 
+    //return normalizeScore(questionCounter,calcScore)
 }
 
 function createChart (x) {
@@ -22,11 +48,12 @@ function createChart (x) {
     	   title: '<<Yellow<<- ->>Blue>>',
            minimum: -3,
            maximum: +3,
-           gridThickness: 1
+           gridThickness: 0
     },
     axisY:{
            minimum: -1,
            maximum: 1,
+           gridThickness: 0
     },
     data: [
     {
@@ -39,6 +66,37 @@ function createChart (x) {
  });
 
 chart.render();
+}
+
+function createChart_2(calcScore) {
+
+	var c = document.getElementById("compassResult");
+	var ctx = c.getContext("2d");
+	const chart_width = document.getElementById("compassResult").width
+	const chart_height = document.getElementById("compassResult").height
+
+	// Create gradient
+	var grd = ctx.createLinearGradient(0, 0, chart_width, 0);
+	grd.addColorStop(0, "yellow");
+	grd.addColorStop(1, "blue");
+
+	// Fill with gradient
+	ctx.fillStyle = grd;
+	ctx.fillRect(0, 0, chart_width, chart_height);
+
+	//draw line
+	ctx.beginPath();
+	ctx.moveTo(20, 50);
+	ctx.lineTo(580, 50);
+	ctx.lineWidth = 5;
+	ctx.stroke();
+
+	//draw point
+	ctx.arc(300, 50, 5, 0, 2 * Math.PI, false);
+    ctx.fillStyle = 'red';
+    ctx.fill();
+    ctx.lineWidth = 1;
+    ctx.stroke();
 }
 
 function initDatabase() {
@@ -68,16 +126,12 @@ function writeData(questionCounter,calcScore) {
 
 function submitQuiz() {
 	console.log('submitted');
-
-	var calcScore = (answerScore('q1') + answerScore('q2') + answerScore('q3'));
-	var questionCountArray = document.getElementsByClassName('question');
-	var questionCounter = 0;
-	for (var i = 0, length = questionCountArray.length; i < length; i++) {
-		questionCounter++;
-	}
+    getScore()
+    
     document.getElementById('chartContainer').style.display = 'block'
     console.log("Total Score: " + calcScore + ", " + '# Questions: ' + questionCounter )    
-    createChart(calcScore)
+    //createChart(calcScore)
+    createChart_2(calcScore)
     initDatabase()
     writeData(questionCounter,calcScore)
 }
